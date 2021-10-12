@@ -17,11 +17,13 @@
 
     <nav>
         <h2>login and navigation</h2>
+        <a href='/'>Home Page</a>
+        <a href='{{ route("Articles") }}'>Articles</a>
     </nav>
 
 
     <!-- main content section for the blog webpage -->
-{{$content}} 
+    {{$content}}
 
 
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use PhpParser\Node\Expr\Cast\Bool_;
+use Illuminate\Support\Str;
 
 class UsersSeeder extends Seeder
 {
@@ -15,6 +16,17 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+
+        User::create([
+            'name' => 'Admin',
+            'email' => "admin@example.com",
+            'email_verified_at' => now(),
+            'password' => bcrypt('password'),
+            'remember_token' => Str::random(10),
+            'author' => 1,
+            'premium' => 1,
+        ]);
+
         User::factory(50)
             ->create();
     }
