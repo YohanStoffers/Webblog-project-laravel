@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Article;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use PhpParser\Node\Expr\Cast\Bool_;
 
-class ArticlesSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +15,7 @@ class ArticlesSeeder extends Seeder
      */
     public function run()
     {
-        Article::factory(20)
+        User::factory(50)
             ->create();
     }
 }
