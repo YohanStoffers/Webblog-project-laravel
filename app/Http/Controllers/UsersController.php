@@ -14,9 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        return view('index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
