@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\StorePostRequestNewAccount;
 class UsersController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $names = User::all('username','id');
+        return view('index', compact('names'));
     }
     /**
      * Show the form for creating a new resource.
@@ -23,7 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('register');
     }
 
     /**
@@ -32,9 +33,10 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequestNewAccount $request)
     {
-        //
+        User::create($request->validated());
+        return redirect('/');
     }
 
     /**

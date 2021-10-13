@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// User Controllers
 Route::get('/', [UsersController::class, 'index']);
+Route::get('Register', [UsersController::class, 'create'])->name('Register');
+Route::post('Make-account', [UsersController::class, 'store']);
+
+// Article Controllers
 Route::get('Articles', [ArticlesController::class, 'index'])->name('Articles');
+

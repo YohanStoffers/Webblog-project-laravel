@@ -1,0 +1,56 @@
+a {
+    padding: 10px;
+}
+
+.grid-container {
+    display:grid;
+    grid-template-areas:
+    'nav login'
+    'content content'
+    'footer footer' ;
+    background-color: lightgoldenrodyellow;
+}
+
+.grid-nav {
+    grid-area: nav;
+}
+
+ .grid-login {
+    grid-area: login;
+}
+
+ .grid-content {
+    grid-area: content;
+}
+
+ .grid-footer {
+    grid-area: footer;
+}
+
+.grid-container > div {
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: lightgrey; */
+}
+
+#register-title {
+    color: white;
+}
+
+#register-main {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.register {
+    border: lightsalmon;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: lightsalmon;
+    
+}
+
+* {
+    font-family:Helvetica, Arial,  sans-serif ;
+}

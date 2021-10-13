@@ -14,16 +14,32 @@
 
 
 <body>
+    <div class="grid-container">
+        <div class="grid-nav">
+            <nav>
+                <h3>navigation</h3>
+                <a href='/'>Home Page</a>
+                <a href='{{ route("Articles") }}'>Articles</a>
+                <a href='{{ route("Register") }}'>Register</a>
+            </nav>
+        </div>
 
-    <nav>
-        <h2>login and navigation</h2>
-        <a href='/'>Home Page</a>
-        <a href='{{ route("Articles") }}'>Articles</a>
-    </nav>
+        <div class="grid-login">
+            <login>
+                <h3>login</h3>
+                <form id='login'>
+                    Username <input type='text' name='username'>
+                    Password <input type='password' name='password'>
+                </form>
+            </login>
+        </div>
 
+        <div class="grid-content">
 
-    <!-- main content section for the blog webpage -->
-    {{$content}}
+            <!-- main content section for the blog webpage -->
+            {{$content}}
+
+        </div>
 
 
 
@@ -32,5 +48,9 @@
 
 
 <footer>
-    <p>this site is copyrighted by Yohan Stoffers INC. no distrubting allowed.</p>
+    <div class="grid-container">
+        <div class="grid-footer">
+            <p>Edit this footer later !!</p>
+        </div>
+    </div>
 </footer>
