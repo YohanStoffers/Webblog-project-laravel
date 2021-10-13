@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StorePostRequestNewAccount extends FormRequest
 {
@@ -26,9 +27,10 @@ class StorePostRequestNewAccount extends FormRequest
         return [
             'username'=> ['min:3','max:25','Unique:users,username','required'],
             'email' => ['Email', 'Unique:users,email', 'required'],
-            'password' => ['min:5','max:255', 'alpha_dash','required'],
+            'password' => ['min:5','max:255', 'alpha_dash','required',],
             'author' => ['required', 'boolean'],
             'premium' => ['required', 'boolean'],
+            
         ];
     }
 }
