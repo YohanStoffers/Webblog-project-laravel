@@ -13,16 +13,19 @@
             <h2>All users in DB (testing)</h2>
             <table>
                 @foreach($names as $name)
-                
+
                 <tr>
                     <td>{{'user id '.$name->id.' Username '.$name->username}}</td>
+                    <td>email {{$name->email}}</td>
+                    <td>premium {{$name->premium}}</td>
+                    <td>author {{$name->author}}</td>
                 </tr>
 
                 @endforeach
 
             </table>
         </show-user-test>
-        
+
 
 
 

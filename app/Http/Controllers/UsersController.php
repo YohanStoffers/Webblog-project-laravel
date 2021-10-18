@@ -14,7 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $names = User::all('username','id');
+        $names = User::all();
         return view('index', compact('names'));
     }
     /**
@@ -35,7 +35,13 @@ class UsersController extends Controller
      */
     public function store(StorePostRequestNewAccount $request)
     {
-        User::create($request->validated());
+        $validated = $request->validated();
+        $validated['password']=bcrypt($validated['password']);
+
+        $user = User::create($validated);
+
+        auth()->login($user);
+
         return redirect('/');
     }
 

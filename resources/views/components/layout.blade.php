@@ -8,30 +8,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='/style.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@2.8.2/dist/alpine.min.js"></script>
-    <title>Opdracht Boodschappenlijst</title>
+    <title>laravel webblog opdracht</title>
 
 </head>
 
 
 <body>
     <div class="grid-container">
-        <div class="grid-nav">
+        <div class="grid-header">
             <nav>
-                <h3>navigation</h3>
-                <a href='/'>Home Page</a>
-                <a href='{{ route("Articles") }}'>Articles</a>
-                <a href='{{ route("Register") }}'>Register</a>
+                <table class="navigation-table">
+                    <td>
+                        <h3 class="navigation">Navigation</h3>
+                    </td>
+                    <td><a href='/'>Home Page</a></td>
+                    <td><a href='{{ route("Articles") }}'>Articles</a></td>
+                    @guest
+                    <td><a href='{{ route("users/create") }}'>Register</a></td>
+                    @endguest
+                </table>
             </nav>
-        </div>
-
-        <div class="grid-login">
+            @guest
             <login>
-                <h3>login</h3>
-                <form id='login'>
-                    Username <input type='text' name='username'>
-                    Password <input type='password' name='password'>
+
+                <form method="post" , action="/login">
+                    @csrf
+                    <table class="login-table">
+                        <tr>
+                            <td>@error('username'){{$message}}@enderror</td>
+                            <td>@error('password'){{$message}}@enderror</td>
+                        </tr>
+                        <tr>
+                            <td class="login">
+                                <h3>Guest</h3>
+                            </td>
+                            <td class="login">Username <input type='text' name='username'></td>
+                            <td class="login">Password <input type='password' name='password'></td>
+                            <td class="login"><button type="submit">Login</button></td>
+                        </tr>
+                    </table>
                 </form>
             </login>
+            @endguest
+            @auth
+            <logout>
+                <table class="login-table">
+                    <tr>
+                        <td class="logout">
+                            <h3 class="welcome">Welcome, {{ ' '.auth()->user()->username }}</h3>
+                        </td>
+
+                        @if((auth()->user()->author) === 1)
+                        <td class="author logout">site author</td>
+                        @endif
+                        @if((auth()->user()->premium) === 1)
+                        <td class="premium logout">Premium account</td>
+                        @endif
+                        <form method="POST" action="/logout">
+                            @csrf
+                            <td><button type="submit">Log Out</button></td>
+                        </form>
+
+                    </tr>
+                </table>
+            </logout>
+            @endauth
+
+
         </div>
 
         <div class="grid-content">
@@ -40,6 +83,7 @@
             {{$content}}
 
         </div>
+    </div>
 
 
 

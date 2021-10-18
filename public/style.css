@@ -1,26 +1,29 @@
 a {
     padding: 10px;
+    color: darkgray;
+    text-decoration: none;
 }
+
+
 
 .grid-container {
     display:grid;
     grid-template-areas:
-    'nav login'
+    'header header'
     'content content'
     'footer footer' ;
     background-color: lightgoldenrodyellow;
 }
 
-.grid-nav {
-    grid-area: nav;
-}
-
- .grid-login {
-    grid-area: login;
+.grid-header {
+    grid-area: header;
+    background-color: darkslategrey;
+    display: inline-flexbox;
 }
 
  .grid-content {
     grid-area: content;
+    padding: 20px;
 }
 
  .grid-footer {
@@ -28,9 +31,10 @@ a {
 }
 
 .grid-container > div {
-    padding: 20px;
+    max-width: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding: 20px;
     /* background-color: lightgrey; */
 }
 
@@ -49,6 +53,49 @@ a {
     padding: 20px;
     background-color: lightsalmon;
     
+}
+
+.error {
+    font-size: smaller;
+}
+
+nav {
+    display: inline-block;
+}
+
+.author {
+    font-size: smaller;
+    color: darkgray;
+    border-bottom: 2px ;
+    border-color: darkgray;
+}
+
+.premium {
+    font-size: smaller;
+    color: coral;
+    border: 5px black ;
+}
+
+.logout {
+   padding: 1px 5px 1px 5px;
+
+}
+
+.navigation, .welcome {
+    color: lightgoldenrodyellow;
+}
+
+.navigation-table {
+    padding-right: 150px ;
+
+}
+
+.login-table {
+
+}
+
+.navigation-table, .login-table {
+    display: inline-block;
 }
 
 * {

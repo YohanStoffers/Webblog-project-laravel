@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,15 @@ use Illuminate\Support\Facades\Route;
 */
 // User Controllers
 Route::get('/', [UsersController::class, 'index']);
-Route::get('Register', [UsersController::class, 'create'])->name('Register');
-Route::post('Make-account', [UsersController::class, 'store']);
+
+
+
+Route::get('/users/create', [UsersController::class, 'create'])->name('users/create')->middleware('guest');
+Route::post('/users', [UsersController::class, 'store'])->middleware('guest');
+
+Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
+Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
+
 
 // Article Controllers
 Route::get('Articles', [ArticlesController::class, 'index'])->name('Articles');
