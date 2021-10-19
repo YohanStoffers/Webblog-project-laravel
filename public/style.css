@@ -103,6 +103,12 @@ nav {
     display: inline-block;
 }
 
+.article-content {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 * {
     font-family:Helvetica, Arial,  sans-serif ;
 }

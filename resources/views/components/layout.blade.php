@@ -22,7 +22,7 @@
                         <h3 class="navigation">Navigation</h3>
                     </td>
                     <td><a href='/'>Home Page</a></td>
-                    <td><a href='{{ route("Articles") }}'>Create article</a></td>
+                    <td><a href='{{ route("Create-article") }}'>Create article</a></td>
                     <td><a href='{{ route("Articles") }}'>Published articles</a></td>
                     @guest
                     <td><a href='{{ route("users/create") }}'>Register</a></td>
