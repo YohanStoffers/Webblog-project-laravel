@@ -14,12 +14,22 @@
             <table>
                 @foreach($articles as $article)
 
-                <tr>
-                    <td>{{'article title '.$article->title.' User Id '.$article->user_id}}</td>
-                    <td>{{$article->content}}</td>
-                 
-                    
-                </tr>
+                <table class="article-tables">
+
+                    <div>
+                        <tr>
+                            <td class="article-data">
+                                <h3 class="article-title">{{'Title: '.$article->title}}</h3>
+                                <h5 class="created-updated">{{' Author: '.$article->user_id .' id'}}</h5>
+
+                                <p>{{$article->content}}</p>
+                                <h5 class="created-updated">{{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}</h5>
+                            </td>
+                        </tr>
+                    </div>
+
+
+                </table>
 
                 @endforeach
 

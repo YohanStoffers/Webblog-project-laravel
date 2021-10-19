@@ -1,21 +1,24 @@
 <x-layout>
 
     <x-slot name="content">
-        <table>
+        @foreach($articles as $article)
+        <table class="article-tables">
 
-            @foreach($articles as $article)
-            <div class="article-content">
-            <tr>
-                <td><h3>{{'Title '.$article->title.' Author User Id '.$article->user_id}}</h3></td>
-            </tr>
-            <tr>
-                <td><p>{{$article->content}}<p></td>
-            </tr>
+            <div>
+                <tr>
+                    <td class="article-data">
+                        <h3 class="article-title"><a class="article-links" href="{{ route('article.show', $article->id)}}">{{'Title: '.$article->title}}</a></h3>
+                        <h5 class="created-updated">{{' Author: '.$article->user_id .' id'}}</h5>
+
+                        <p>{{$article->content}}</p>
+                        <h5 class="created-updated">{{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}</h5>
+                    </td>
+                </tr>
             </div>
-            @endforeach
 
 
         </table>
+        @endforeach
 
     </x-slot>
 

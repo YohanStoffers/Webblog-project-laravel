@@ -27,8 +27,9 @@ Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 
 
-// Article Controllers
-Route::get('/articles', [ArticlesController::class, 'index'])->name('Articles');
-Route::get('/articles/create', [ArticlesController::class, 'create'])->name('Create-article');
+// Article rout to get a single article view
+Route::get('/articles/{articles}', [ArticlesController::class, 'show'])->name('articles.show');
+Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
+Route::get('/articles/create', [ArticlesController::class, 'create'])->name('articles.create');
 Route::post('/articles', [ArticlesController::class, 'store']);
 

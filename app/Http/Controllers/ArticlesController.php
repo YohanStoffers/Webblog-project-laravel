@@ -49,21 +49,21 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\articles  $articles
+     * @param  \App\Models\Article  $articles
      * @return \Illuminate\Http\Response
      */
-    public function show(articles $articles)
+    public function show(Article $articles)
     {
-        //
+        return view('article', compact('articles'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\articles  $articles
+     * @param  \App\Models\Article  $articles
      * @return \Illuminate\Http\Response
      */
-    public function edit(articles $articles)
+    public function edit(Article $articles)
     {
         //
     }
@@ -75,7 +75,7 @@ class ArticlesController extends Controller
      * @param  \App\Models\articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, articles $articles)
+    public function update(Request $request, Article $articles)
     {
         //
     }
@@ -86,7 +86,7 @@ class ArticlesController extends Controller
      * @param  \App\Models\articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(articles $articles)
+    public function destroy(Article $articles)
     {
         //
     }

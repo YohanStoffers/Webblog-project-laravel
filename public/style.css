@@ -3,6 +3,11 @@ a {
     color: darkgray;
     text-decoration: none;
 }
+a:hover {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
 
 
 
@@ -25,7 +30,6 @@ a {
 
  .grid-content {
     grid-area: main;
-    max-width: 100%;
     padding: 20px;
 }
 
@@ -108,7 +112,37 @@ nav {
     margin-left: auto;
     margin-right: auto;
 }
+.article-data {
+  
+}
 
+.article-title {
+    color: coral;
+}
+.created-updated {
+    color: darkslategrey;
+
+}
+
+.article-tables {
+    max-width: 650px;
+    min-width: 650px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px 5px 10px;
+    border: solid darkslategrey 1px;
+}
+
+.article-links {
+    
+    color: coral;
+    padding: 0px;
+}
+.article-links:hover {
+    
+    color: darkred;
+    padding: 0px;
+}
 * {
     font-family:Helvetica, Arial,  sans-serif ;
 }
