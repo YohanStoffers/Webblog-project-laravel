@@ -28,6 +28,7 @@ Route::post('/login', [SessionsController::class, 'store'])->middleware('guest')
 
 
 // Article Controllers
-Route::get('Articles', [ArticlesController::class, 'index'])->name('Articles');
+Route::get('/articles/create', [ArticlesController::class, 'index'])->name('Article');
+Route::get('/articles/create', [ArticlesController::class, 'create'])->name('Articles');
 Route::post('/articles', [ArticlesController::class, 'store']);
 

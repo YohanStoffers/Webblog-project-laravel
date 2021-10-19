@@ -32,7 +32,7 @@ class StorePostRequestNewArticle extends FormRequest
     {
         return [
             'title' => ['min:3', 'max:120', 'required'],
-            'article' => ['required'],
+            'content' => ['required'],
             'categories' => ['required',],
             'user_id' => [''],
         ];
