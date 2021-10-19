@@ -12,13 +12,13 @@
         <show-user-test>
             <h2>All users in DB (testing)</h2>
             <table>
-                @foreach($names as $name)
+                @foreach($articles as $article)
 
                 <tr>
-                    <td>{{'user id '.$name->id.' Username '.$name->username}}</td>
-                    <td>email {{$name->email}}</td>
-                    <td>premium {{$name->premium}}</td>
-                    <td>author {{$name->author}}</td>
+                    <td>{{'article title '.$article->title.' User Id '.$article->user_id}}</td>
+                    <td>{{$article->content}}</td>
+                 
+                    
                 </tr>
 
                 @endforeach

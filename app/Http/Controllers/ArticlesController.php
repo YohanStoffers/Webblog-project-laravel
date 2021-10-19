@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequestNewArticle;
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Nette\Utils\Arrays;
 
 class ArticlesController extends Controller
 {
@@ -33,9 +35,14 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequestNewArticle $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->user()->id;
+    
+        $article = Article::create($validated);
+
+        return redirect('/');
     }
 
     /**

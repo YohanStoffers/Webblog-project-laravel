@@ -4,9 +4,38 @@
 
         <h1>articles</h1>
         <div>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eu urna vestibulum, viverra sapien vel, imperdiet metus. Vivamus dictum volutpat est, id porta purus blandit vitae. Donec ipsum sem, malesuada sed viverra ac, aliquam sit amet felis. Nulla fringilla, enim vel rhoncus molestie, lacus nisl semper neque, id porta augue metus a sem. Maecenas accumsan nisl id posuere tempor. Donec velit lacus, tempor vitae lacus sit amet, pulvinar laoreet arcu. Quisque id imperdiet ante. Pellentesque porta, felis quis imperdiet iaculis, leo magna vestibulum nulla, sed vehicula nibh mauris nec mauris.
-            </p>
+            <form name='article-post' method="POST" action="/articles">
+                @csrf
+                <table>
+                    <div id='article-main'>
+                        <tr>
+                            <td><label for="title">Article title</label></td>
+                            <td><input type='text' name='title' require></td>
+                            <td class='error'>@error('title'){{$message}}@enderror</td>
+                        </tr>
+                        <tr>
+                            <td><label for="article">Article</label></td>
+                            <td><textarea name='article' rows="20" cols="100" require></textarea></td>
+                            <td class='error'>@error('article'){{$message}}@enderror</td>
+                        </tr>
+                        <tr>
+                            <td><label for="categories">categories</label></td>
+                            <td><input type='text' name='categories' require></td>
+                            <td class='error'>@error('categories'){{$message}}@enderror</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button type="submit">Publish article</button></td>
+                        </tr>
+    
+                      
+
+                    </div>
+                </table>
+
+
+
+            </form>
         </div>
 
     </x-slot>

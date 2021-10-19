@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequestNewAccount;
+use App\Models\Article;
+
 class UsersController extends Controller
 {
     /**
@@ -14,8 +16,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $names = User::all();
-        return view('index', compact('names'));
+        $articles = Article::all();
+        return view('index', compact('articles'));
     }
     /**
      * Show the form for creating a new resource.
