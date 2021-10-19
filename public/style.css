@@ -132,6 +132,13 @@ nav {
     padding: 5px 10px 5px 10px;
     border: solid darkslategrey 1px;
 }
+.article-fully {
+    max-width: 1240px;
+    min-width: 650px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
 
 .article-links {
     

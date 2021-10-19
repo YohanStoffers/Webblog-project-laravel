@@ -7,8 +7,8 @@
             <div>
                 <tr>
                     <td class="article-data">
-                        <h3 class="article-title"><a class="article-links" href="{{ route('article.show', $article->id)}}">{{'Title: '.$article->title}}</a></h3>
-                        <h5 class="created-updated">{{' Author: '.$article->user_id .' id'}}</h5>
+                        <h3 class="article-title"><a class="article-links" href="{{ route('articles.show', $article->id)}}">{{'Title: '.$article->title}}</a></h3>
+                        <h5 class="created-updated">{{' Author: ".$article->user->username}}</h5>
 
                         <p>{{$article->content}}</p>
                         <h5 class="created-updated">{{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}</h5>

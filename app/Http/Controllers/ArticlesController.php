@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequestNewArticle;
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Nette\Utils\Arrays;
 
@@ -16,7 +17,9 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        
+        $articles = Article::with('user')->get();
+        
         return view('articles', compact('articles'));
     }
 
@@ -54,7 +57,8 @@ class ArticlesController extends Controller
      */
     public function show(Article $articles)
     {
-        return view('article', compact('articles'));
+        $article = $articles->load('user');
+        return view('article', compact('article'));
     }
 
     /**
