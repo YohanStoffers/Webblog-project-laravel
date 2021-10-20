@@ -19,17 +19,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [UsersController::class, 'index']);
 
 
-
-Route::get('/users/create', [UsersController::class, 'create'])->name('users/create')->middleware('guest');
+// All user related routes
 Route::post('/users', [UsersController::class, 'store'])->middleware('guest');
+Route::get('/user/create', [UsersController::class, 'create'])->name('user.create')->middleware('guest');
+Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
 
 Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 
 
 // Article rout to get a single article view
-Route::get('/articles/{articles}', [ArticlesController::class, 'show'])->name('articles.show');
+
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
 Route::get('/article/create', [ArticlesController::class, 'create'])->name('articles.create');
-Route::post('/articles', [ArticlesController::class, 'store']);
+Route::get('/articles/{articles}', [ArticlesController::class, 'show'])->name('articles.show');
+Route::get('/articles/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
 
+Route::post('/articles', [ArticlesController::class, 'store']);
+Route::post('/articles/{article}', [ArticlesController::class, 'update']);

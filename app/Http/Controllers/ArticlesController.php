@@ -58,6 +58,7 @@ class ArticlesController extends Controller
     public function show(Article $articles)
     {
         $article = $articles->load('user');
+       
         return view('article', compact('article'));
     }
 
@@ -67,9 +68,9 @@ class ArticlesController extends Controller
      * @param  \App\Models\Article  $articles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $articles)
+    public function edit(Article $article)
     {
-        //
+        return view('edit-article', compact('article'));
     }
 
     /**
@@ -79,9 +80,10 @@ class ArticlesController extends Controller
      * @param  \App\Models\articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $articles)
+    public function update(StorePostRequestNewArticle $request, Article $article)
     {
-        //
+        $validated = $request->validate();
+        $article->update($validated);
     }
 
     /**

@@ -150,6 +150,21 @@ nav {
     color: darkred;
     padding: 0px;
 }
+
+.edit-button {
+    font-size: smaller;
+    color: darkslategrey;
+    padding: 0px;
+}
+.edit-button:hover { 
+    color: black;
+    padding: 0px;
+}
+
+input {
+    width: 200px;
+}
+
 * {
     font-family:Helvetica, Arial,  sans-serif ;
 }

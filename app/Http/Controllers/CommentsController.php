@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,9 @@ class CommentsController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function show(comments $comments)
+    public function show(Comment $comment, Article $article)
     {
-        //
+    
     }
 
     /**
@@ -55,7 +56,7 @@ class CommentsController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function edit(comments $comments)
+    public function edit(Comment $comment)
     {
         //
     }

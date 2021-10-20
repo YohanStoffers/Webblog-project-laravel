@@ -24,9 +24,16 @@
                     <td><a href='/'>Home Page</a></td>
                     <td><a href='{{ route("articles.create") }}'>Create article</a></td>
                     <td><a href='{{ route("articles.index") }}'>Published articles</a></td>
-                    @guest
-                    <td><a href='{{ route("users/create") }}'>Register</a></td>
-                    @endguest
+                    <td>
+                        @guest
+                        <a href='{{ route("user.create") }}'>Register</a>
+                        @endguest
+
+                        @auth
+                        <a href="{{ route('users.show', auth()->user()->id)}}">My Account</a>
+                        @endauth
+                        
+                    </td>
                 </table>
             </nav>
             @guest
