@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequestNewAccount;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\Comment;
 
 class UsersController extends Controller
@@ -56,7 +57,6 @@ class UsersController extends Controller
      */
     public function show(user $user)
     {
-
         $userAccount = $user->load('articles');
         // dd($user);
         return view('myAccount', compact('userAccount'));

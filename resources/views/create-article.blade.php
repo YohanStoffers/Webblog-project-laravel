@@ -20,15 +20,19 @@
                         </tr>
                         <tr>
                             <td><label for="categories">categories</label></td>
-                            <td><input type='text' name='categories' require></td>
+                            <td>    
+                                @foreach($categories as $category )
+                                    <input type='checkbox' name='categories[]' value="{{$category->id}}">{{$category->name}}
+                                @endforeach
+                            </td>
                             <td class='error'>@error('categories'){{$message}}@enderror</td>
                         </tr>
                         <tr>
                             <td></td>
                             <td><button type="submit">Publish article</button></td>
                         </tr>
-    
-                      
+
+
 
                     </div>
                 </table>

@@ -3,7 +3,7 @@
     <x-slot name="content">
 
         <h1>articles</h1>
-       
+
         <div>
             <form name='article-post' method="POST" action="/articles/{{$article->id}}">
                 @csrf
@@ -21,7 +21,18 @@
                         </tr>
                         <tr>
                             <td><label for="categories">categories</label></td>
-                            <td><input type='text' name='categories' value="{{$article->categories}}" require></td>
+                            <td>
+                                @foreach($categories as $category)
+                                
+                                @if($category->id === $articleCategories[$i]->id)
+                                <input type='checkbox' name='categories' checked="yes" value="{{$category->id}}">{{$category->name}}
+                                {{$i++}}
+                                @else
+                                <input type='checkbox' name='categories' value="{{$category->id}}">{{$category->name}}
+                                @endif
+                                
+                                @endforeach
+                            </td>
                             <td class='error'>@error('categories'){{$message}}@enderror</td>
                         </tr>
                         <tr>

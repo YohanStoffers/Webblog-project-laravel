@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequestNewArticle;
 use App\Models\Article;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Nette\Utils\Arrays;
@@ -30,7 +31,8 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        return view('create-article');
+        $categories= Category::all();
+        return view('create-article', compact('categories'));
     }
 
     /**
@@ -43,8 +45,8 @@ class ArticlesController extends Controller
     {
         $validated = $request->validated();
         $validated['user_id'] = auth()->user()->id;
-    
         $article = Article::create($validated);
+        $article->categories()->attach($validated['categories']);
 
         return redirect('/');
     }
@@ -69,8 +71,12 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
-    {
-        return view('edit-article', compact('article'));
+    {   
+        $i = 0;
+        $categories = Category::all();
+        $articleCategories = $article->categories;
+        // dd($articleCategories[(1) - 1]->id);
+        return view('edit-article', compact('article', 'categories','articleCategories', 'i'));
     }
 
     /**
@@ -82,8 +88,12 @@ class ArticlesController extends Controller
      */
     public function update(StorePostRequestNewArticle $request, Article $article)
     {
-        $validated = $request->validate();
+        
+        $validated = $request->validated();
         $article->update($validated);
+
+        return redirect(route('users.show', auth()->user()->id));
+
     }
 
     /**
@@ -94,6 +104,6 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $articles)
     {
-        //
+        
     }
 }
