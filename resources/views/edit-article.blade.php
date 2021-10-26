@@ -23,14 +23,9 @@
                             <td><label for="categories">categories</label></td>
                             <td>
                                 @foreach($categories as $category)
-                                
-                                @if($category->id === $articleCategories[$i]->id)
-                                <input type='checkbox' name='categories' checked="yes" value="{{$category->id}}">{{$category->name}}
-                                {{$i++}}
-                                @else
-                                <input type='checkbox' name='categories' value="{{$category->id}}">{{$category->name}}
-                                @endif
-                                
+                          
+                                <input type='checkbox' name='categories[]'  value="{{$category->id}}">{{$category->name}}
+                              
                                 @endforeach
                             </td>
                             <td class='error'>@error('categories'){{$message}}@enderror</td>

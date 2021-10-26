@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequestNewArticle;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Nette\Utils\Arrays;
@@ -60,8 +61,12 @@ class ArticlesController extends Controller
     public function show(Article $articles)
     {
         $article = $articles->load('user');
+        $comments = $articles->load('comments');
+        $categories = $article->load('categories');
+        $userOfComment = Comment::with('user')->get();
+        // dd($userOfComment);
        
-        return view('article', compact('article'));
+        return view('article', compact('article', 'comments','userOfComment', 'categories'));
     }
 
     /**
@@ -71,12 +76,11 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Article $article)
-    {   
+    {
         $i = 0;
         $categories = Category::all();
-        $articleCategories = $article->categories;
-        // dd($articleCategories[(1) - 1]->id);
-        return view('edit-article', compact('article', 'categories','articleCategories', 'i'));
+        
+        return view('edit-article', compact('article', 'categories', 'i'));
     }
 
     /**
@@ -90,6 +94,8 @@ class ArticlesController extends Controller
     {
         
         $validated = $request->validated();
+      
+        $article->categories()->sync($validated['categories']);
         $article->update($validated);
 
         return redirect(route('users.show', auth()->user()->id));

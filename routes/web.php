@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -20,19 +21,22 @@ Route::get('/', [UsersController::class, 'index']);
 
 
 // All user related routes
-Route::post('/users', [UsersController::class, 'store'])->middleware('guest');
+
 Route::get('/user/create', [UsersController::class, 'create'])->name('user.create')->middleware('guest');
 Route::get('/users/{user}', [UsersController::class, 'show'])->name('users.show');
 
+Route::post('/users', [UsersController::class, 'store'])->middleware('guest');
 Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 
-
-// Article rout to get a single article view
+// Article routes
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
 Route::get('/article/create', [ArticlesController::class, 'create'])->name('articles.create');
 Route::get('/articles/{articles}', [ArticlesController::class, 'show'])->name('articles.show');
+
+Route::post('/articles/{article}/comment', [CommentsController::class, 'store'])->name('comment.store');
+
 Route::get('/articles/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
 
 Route::post('/articles', [ArticlesController::class, 'store']);

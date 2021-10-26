@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequestNewComment;
 use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -34,9 +35,13 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequestNewComment $request, Article $article)
     {
-        //
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->user()->id;
+        $validated['article_id'] = $article->id ;
+        $comment = Comment::create($validated);
+        return redirect(route('articles.show',$article->id));
     }
 
     /**

@@ -136,7 +136,7 @@ nav {
     max-width: 1240px;
     min-width: 650px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
     
 }
 
@@ -163,6 +163,29 @@ nav {
 
 input {
    
+}
+.comment{
+    border: solid darkslategrey 1px;
+    padding: 5px 20px 20px 20px;
+    min-width: 70%;
+}
+.comments {
+    max-width: 70%;
+    
+}
+
+.comment-text {
+    font-size: smaller ;
+}
+
+.comment-username {
+    color: coral;
+}
+
+.categories-article{
+    color: darkslategrey;
+    font-weight: normal;
+    font-size: smaller;
 }
 
 * {
