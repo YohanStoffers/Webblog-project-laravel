@@ -18,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
+        $articles = Article::all()->sortByDesc('updated_at');
         return view('index', compact('articles'));
     }
     /**
@@ -68,7 +68,7 @@ class UsersController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function edit(comments $comments)
+    public function edit(Comment $comments)
     {
         //
     }
@@ -80,7 +80,7 @@ class UsersController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comments $comments)
+    public function update(Request $request, Comment $comments)
     {
         //
     }
@@ -91,7 +91,7 @@ class UsersController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comments $comments)
+    public function destroy(Comment $comments)
     {
         //
     }

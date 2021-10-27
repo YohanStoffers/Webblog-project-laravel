@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Mockery\Undefined;
 use Nette\Utils\Arrays;
 
 class ArticlesController extends Controller
@@ -19,11 +20,18 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        
-        $articles = Article::with('user')->get();
-        
-        return view('articles', compact('articles'));
+        $categories = Category::all();
+        $articles = Article::with('user')->get()->sortByDesc('created_at');
+        return view('articles', compact('articles','categories'));
     }
+
+    public function indexFilter(Category $categories)
+    {
+        $articles = Article::with('user')->get()->sortByDesc('created_at');
+        return view('articles-filter', compact('articles', 'categories'));
+    }
+    
+    
 
     /**
      * Show the form for creating a new resource.
@@ -46,6 +54,11 @@ class ArticlesController extends Controller
     {
         $validated = $request->validated();
         $validated['user_id'] = auth()->user()->id;
+
+        if (!array_key_exists('categories', $validated)) {
+            $validated += ['categories' => [8]];
+        }
+
         $article = Article::create($validated);
         $article->categories()->attach($validated['categories']);
 
@@ -108,8 +121,12 @@ class ArticlesController extends Controller
      * @param  \App\Models\articles  $articles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $articles)
+    public function destroy(Article $article)
     {
-        
+        //dd($article->categories);
+        $article->comments()->delete();
+        $article->categories()->detach();
+        $article->delete();
+        return redirect(route('users.show', auth()->user()->id));
     }
 }

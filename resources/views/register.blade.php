@@ -44,7 +44,7 @@
                             <td class='error'>@error('premium'){{$message}}@enderror</td>
                         </tr>
                         <tr>
-                            <td><label for="author">I am auhtor</label>
+                            <td><label for="author">I am author</label>
                                 <input type='hidden' name='author' value="0">
                             </td>
                             <td><input type='checkbox' name='author' value="1"></td>

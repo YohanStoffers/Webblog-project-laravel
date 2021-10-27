@@ -14,7 +14,7 @@ class StorePostRequestNewComment extends FormRequest
      */
     public function authorize()
     {
-        if (auth()->user()->author === 1) {
+        if (auth()->user()) {
             return True;
         }
         else {

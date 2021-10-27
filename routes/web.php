@@ -32,12 +32,16 @@ Route::post('/login', [SessionsController::class, 'store'])->middleware('guest')
 // Article routes
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
+Route::post('/articles/filter/{categories}', [ArticlesController::class, 'indexFilter'])->name('articlesFilter.index');
+
+
 Route::get('/article/create', [ArticlesController::class, 'create'])->name('articles.create');
 Route::get('/articles/{articles}', [ArticlesController::class, 'show'])->name('articles.show');
 
 Route::post('/articles/{article}/comment', [CommentsController::class, 'store'])->name('comment.store');
 
 Route::get('/articles/{article}/edit', [ArticlesController::class, 'edit'])->name('articles.edit');
+Route::get('/articles/{article}/destroy', [ArticlesController::class, 'destroy'])->name('articles.destroy');
 
 Route::post('/articles', [ArticlesController::class, 'store']);
 Route::post('/articles/{article}', [ArticlesController::class, 'update']);
