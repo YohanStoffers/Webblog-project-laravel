@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequestNewArticle;
+use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -33,9 +35,9 @@ class CategoriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StorePostRequestNewArticle $request)
     {
-        //
+
     }
 
     /**
@@ -44,10 +46,19 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function show(categories $categories)
+    public function show(Request $request)
     {
-        //
+        
+        if ($request['categories'] === null) {
+           return redirect(route('articles.index'));
+        }
+        else{
+            $categories = Category::whereIn('id', $request['categories'])->with('articles')->get();
+            return view('articles-categories', compact('categories'));
+        }
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -55,7 +66,7 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function edit(categories $categories)
+    public function edit(Category $categories)
     {
         //
     }
@@ -67,7 +78,7 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, categories $categories)
+    public function update(Request $request, Category $categories)
     {
         //
     }
@@ -78,7 +89,7 @@ class CategoriesController extends Controller
      * @param  \App\Models\categories  $categories
      * @return \Illuminate\Http\Response
      */
-    public function destroy(categories $categories)
+    public function destroy(Category $categories)
     {
         //
     }

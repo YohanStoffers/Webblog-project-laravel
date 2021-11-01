@@ -7,13 +7,14 @@
 
             <h3 class="article-title">{{'Title: '.$article->title}}</h3>
             <h5 class="categories-article">
-                Categories: 
+                Categories:
                 @foreach($article->categories as $category)
-                    {{$category->name.' '}}
+                {{$category->name.' '}}
                 @endforeach
             </h5>
             <h5 class="created-updated">{{' Author: '.$article->user->username}}</h5>
             <p>{{$article->content}}</p>
+            <img src="{{ asset('storage'.$article->image) }}" />{{$article->image}}
             <h5 class="created-updated">{{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}</h5>
 
         </div>

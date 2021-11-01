@@ -3,12 +3,13 @@
     <x-slot name="content">
         <h2>All articles</h2>
         <table>
-            <form methode="POST" action="{{route('articlesFilter.index','test')}}">
+            <form method="POST" action="{{route('categories.show')}}">
+                @csrf
                 <tr>
                     <td>
                         @foreach($categories as $category)
 
-                        <input type="checkbox" name="categories" value="{{$category->id}}">{{$category->name}}</option>
+                        <input type="checkbox" name="categories[]" value="{{$category->id}}">{{$category->name}}</option>
 
                         @endforeach
                     </td>

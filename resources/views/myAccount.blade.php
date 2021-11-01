@@ -11,7 +11,7 @@
             <div>
                 <tr>
                     <td class="article-data">
-                        <h3 class="article-title"><a class="article-links" href="{{ route('articles.show', $article->id)}}">{{'Title: '.$article->title .' '. $article->id}}</a></h3>
+                        <h3 class="article-title"><a class="article-links" href="{{ route('articles.show', $article->id)}}">{{'Title: '.$article->title}}</a></h3>
                         <h5 class="categories-article">
                             Categories:
                             @foreach($article->categories as $category)

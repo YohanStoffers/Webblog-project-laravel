@@ -103,7 +103,12 @@ nav {
 
 }
 
-.navigation-table, .login-table {
+.search-table {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navigation-table, .login-table, .search-table {
     display: inline-block;
 }
 
@@ -186,6 +191,10 @@ input {
     color: darkslategrey;
     font-weight: normal;
     font-size: smaller;
+}
+.filters {
+    border: darkslategrey solid 1px;
+    padding: 5px 10px 5px 10px;
 }
 
 * {

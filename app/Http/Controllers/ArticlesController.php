@@ -6,10 +6,9 @@ use App\Http\Requests\StorePostRequestNewArticle;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Comment;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Mockery\Undefined;
-use Nette\Utils\Arrays;
+
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
 {
@@ -21,18 +20,11 @@ class ArticlesController extends Controller
     public function index()
     {
         $categories = Category::all();
+        //dd(route('categories.store'));
         $articles = Article::with('user')->get()->sortByDesc('created_at');
         return view('articles', compact('articles','categories'));
     }
-
-    public function indexFilter(Category $categories)
-    {
-        $articles = Article::with('user')->get()->sortByDesc('created_at');
-        return view('articles-filter', compact('articles', 'categories'));
-    }
     
-    
-
     /**
      * Show the form for creating a new resource.
      *
@@ -52,13 +44,15 @@ class ArticlesController extends Controller
      */
     public function store(StorePostRequestNewArticle $request)
     {
+        $validated['image'] = Storage::putFile('photos', new File($request['image']));
+        dd($validated['image']);
         $validated = $request->validated();
         $validated['user_id'] = auth()->user()->id;
-
+        
         if (!array_key_exists('categories', $validated)) {
             $validated += ['categories' => [8]];
         }
-
+        
         $article = Article::create($validated);
         $article->categories()->attach($validated['categories']);
 

@@ -34,6 +34,7 @@ class StorePostRequestNewArticle extends FormRequest
             'title' => ['min:3', 'max:120', 'required'],
             'content' => ['required'],
             'categories' => ['',],
+            'image' => [''],
         ];
     }
 }

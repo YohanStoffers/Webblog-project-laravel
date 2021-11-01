@@ -4,7 +4,7 @@
 
         <h1>articles</h1>
         <div>
-            <form name='article-post' method="POST" action="/articles">
+            <form method="POST" enctype="multipart/form-data" action="{{route('articles.store')}}">
                 @csrf
                 <table>
                     <div id='article-main'>
@@ -20,16 +20,20 @@
                         </tr>
                         <tr>
                             <td><label for="categories">categories</label></td>
-                            <td>    
+                            <td>
                                 @foreach($categories as $category )
-                                    <input type='checkbox' name='categories[]' value="{{$category->id}}">{{$category->name}}
+                                <input type='checkbox' name='categories[]' value="{{$category->id}}">{{$category->name}}
                                 @endforeach
                             </td>
                             <td class='error'>@error('categories'){{$message}}@enderror</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td><button type="submit">Publish article</button></td>
+                            <td>
+                                <label for="img">Upload image:</label>
+                                <input type="file" name='image'>
+                                <button type="submit">Publish article</button>
+                            </td>
                         </tr>
 
 

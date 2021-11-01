@@ -32,7 +32,7 @@
                         @auth
                         <a href="{{ route('users.show', auth()->user()->id)}}">My Account</a>
                         @endauth
-                        
+
                     </td>
                 </table>
             </nav>
@@ -81,6 +81,21 @@
             </table>
 
             @endauth
+            <table class="search-table">
+                <form method='post' action="/">
+                    <tr>
+                        <td>
+                            <h3 class="welcome">Search</h3>
+                        </td>
+                        <td>
+                            <input type="text" name="title">
+                        </td>
+                        <td>
+                            <button type="submit">find it</button>
+                        </td>
+                    </tr>
+                </form>
+            </table>
 
 
         </div>
