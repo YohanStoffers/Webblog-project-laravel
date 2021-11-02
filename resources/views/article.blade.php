@@ -5,6 +5,15 @@
 
         <div class="article-fully">
 
+            <h5 class="type-article">
+                Article Type:
+                @if($article->premium===1)
+                <text class="premium ">Premium</text>
+                @else
+                <text class="type-article">Basic</text>
+                @endif
+            </h5>
+
             <h3 class="article-title">{{'Title: '.$article->title}}</h3>
             <h5 class="categories-article">
                 Categories:
@@ -14,8 +23,12 @@
             </h5>
             <h5 class="created-updated">{{' Author: '.$article->user->username}}</h5>
             <p>{{$article->content}}</p>
-            <img src="{{ asset('storage'.$article->image) }}" />{{$article->image}}
-            <h5 class="created-updated">{{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}</h5>
+            <img class="article-image" src="{{asset('storage/'.$article->image)}}" alt="" />
+            <h5 class="created-updated">
+                {{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}
+            </h5>
+
+
 
         </div>
 

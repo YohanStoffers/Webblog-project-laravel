@@ -25,7 +25,8 @@ class ArticleFactory extends Factory
         return [
             'title' => $this->faker->word(),
             'content' => $this->faker->text(),
-            'user_id' => User::inRandomOrder()->first()
+            'user_id' => User::inRandomOrder()->first(),
+            'premium' => rand(0, 1),
         ];
     }
 }

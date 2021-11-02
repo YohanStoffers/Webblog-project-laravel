@@ -23,7 +23,9 @@
                     </td>
                     <td><a href='/'>Home Page</a></td>
                     <td><a href='{{ route("articles.create") }}'>Create article</a></td>
+                    @auth
                     <td><a href='{{ route("articles.index") }}'>Published articles</a></td>
+                    @endauth
                     <td>
                         @guest
                         <a href='{{ route("user.create") }}'>Register</a>
@@ -39,9 +41,9 @@
             @guest
 
 
-            <form method="post" , action="/login">
-                @csrf
-                <table class="login-table">
+            <table class="login-table">
+                <form method="post" , action="/login">
+                    @csrf
                     <tr>
                         <td>@error('username'){{$message}}@enderror</td>
                         <td>@error('password'){{$message}}@enderror</td>
@@ -54,8 +56,8 @@
                         <td class="login">Password <input type='password' name='password'></td>
                         <td class="login"><button type="submit">Login</button></td>
                     </tr>
-                </table>
-            </form>
+                </form>
+            </table>
 
             @endguest
             @auth

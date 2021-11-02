@@ -19,8 +19,9 @@
                 </tr>
             </form>
         </table>
-
         @foreach($articles as $article)
+        @if(!(auth()->user()->premium === 0 && $article->premium === 1))
+        {{$article->premium}}
         <table class="article-tables">
 
             <div>
@@ -43,6 +44,7 @@
 
         </table>
 
+        @endif
         @endforeach
 
     </x-slot>

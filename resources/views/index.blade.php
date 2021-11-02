@@ -12,6 +12,7 @@
         <show-user-test>
             <h2>All users in DB (testing)</h2>
             @foreach($articles as $article)
+            @if(!(auth()->user()->premium === 0 && $article->premium === 1))
             <table class="article-tables">
 
                 <div>
@@ -34,7 +35,7 @@
 
 
             </table>
-
+            @endif
             @endforeach
 
         </show-user-test>

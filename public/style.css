@@ -9,6 +9,14 @@ a:hover {
     text-decoration: none;
 }
 
+.categories-selection{
+    font-size: smaller;
+}
+.titles {
+    color: darkslategrey;
+    font-weight: bold;
+
+}
 
 
 .grid-container {
@@ -70,14 +78,14 @@ nav {
 }
 
 .author {
-    font-size: smaller;
+ 
     color: darkgray;
     border-bottom: 2px ;
     border-color: darkgray;
 }
 
 .premium {
-    font-size: smaller;
+    
     color: coral;
     border: 5px black ;
 }
@@ -156,6 +164,11 @@ nav {
     padding: 0px;
 }
 
+.article-image{
+    max-width: 1000px;
+    height: auto;
+}
+
 .edit-button {
     font-size: smaller;
     color: darkslategrey;
@@ -192,6 +205,12 @@ input {
     font-weight: normal;
     font-size: smaller;
 }
+
+.type-article{
+    color: darkslategrey;
+    font-weight: normal;
+}
+
 .filters {
     border: darkslategrey solid 1px;
     padding: 5px 10px 5px 10px;

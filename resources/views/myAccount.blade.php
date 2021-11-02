@@ -4,7 +4,7 @@
 
         <h1>You're published articles</h1>
 
-        @foreach($userAccount->articles as $article)
+        @foreach($userAccount->articles->sortByDesc('updated_at') as $article)
 
         <table class="article-tables">
 

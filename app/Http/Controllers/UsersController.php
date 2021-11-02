@@ -57,8 +57,12 @@ class UsersController extends Controller
      */
     public function show(user $user)
     {
+        $user->articles->sortByDesc('updated_at');
         $userAccount = $user->load('articles');
-        // dd($user);
+        // dd($userAccount);
+        
+        
+        // dd($userAccount);
         return view('myAccount', compact('userAccount'));
     }
 

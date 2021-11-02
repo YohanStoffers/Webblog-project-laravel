@@ -44,9 +44,15 @@ class ArticlesController extends Controller
      */
     public function store(StorePostRequestNewArticle $request)
     {
-        $validated['image'] = Storage::putFile('photos', new File($request['image']));
-        dd($validated['image']);
         $validated = $request->validated();
+        $path = null;
+
+        if(array_key_exists('image', $validated)){
+            $path = Storage::putFile('photos', new File($validated['image']));
+        }
+        
+        
+        $validated['image'] = $path;
         $validated['user_id'] = auth()->user()->id;
         
         if (!array_key_exists('categories', $validated)) {
@@ -71,7 +77,6 @@ class ArticlesController extends Controller
         $comments = $articles->load('comments');
         $categories = $article->load('categories');
         $userOfComment = Comment::with('user')->get();
-        // dd($userOfComment);
        
         return view('article', compact('article', 'comments','userOfComment', 'categories'));
     }
@@ -99,9 +104,19 @@ class ArticlesController extends Controller
      */
     public function update(StorePostRequestNewArticle $request, Article $article)
     {
-        
         $validated = $request->validated();
-      
+        $path = null;
+
+        if (array_key_exists('image', $validated)) {
+            $path = Storage::putFile('photos', new File($validated['image']));
+        }
+
+        $validated['image'] = $path;
+
+        if (!array_key_exists('categories', $validated)) {
+            $validated += ['categories' => [8]];
+        }
+        
         $article->categories()->sync($validated['categories']);
         $article->update($validated);
 
