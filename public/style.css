@@ -1,3 +1,7 @@
+body {
+    background-color: lightgoldenrodyellow ;
+}
+
 a {
     padding: 10px;
     color: darkgray;
@@ -129,20 +133,31 @@ nav {
   
 }
 
-.article-title {
-    color: coral;
-}
-.created-updated {
+
+.created-updated0 {
     color: darkslategrey;
 
 }
+.created-updated1 {
+    color: lightgoldenrodyellow;
 
-.article-tables {
+}
+
+.article-tables0 {
     max-width: 650px;
     min-width: 650px;
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 5px 10px 5px 10px;
+    border: solid darkslategrey 1px;
+}
+.article-tables1 {
+    max-width: 650px;
+    min-width: 650px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 5px 10px 5px 10px;
+    background-color: darkslategrey;
     border: solid darkslategrey 1px;
 }
 .article-fully {
@@ -153,12 +168,25 @@ nav {
     
 }
 
-.article-links {
+.article-links0 {
     
     color: coral;
     padding: 0px;
 }
-.article-links:hover {
+
+.article-links1 {
+    
+    color: coral;
+    padding: 0px;
+}
+
+.article-links0:hover {
+    
+    color: darkred;
+    padding: 0px;
+}
+
+.article-links1:hover {
     
     color: darkred;
     padding: 0px;
@@ -169,12 +197,32 @@ nav {
     height: auto;
 }
 
-.edit-button {
+.article-title0 {
+    color: coral;
+}
+.article-title1 {
+    color: coral;
+}
+
+.edit-button0 {
     font-size: smaller;
     color: darkslategrey;
     padding: 0px;
 }
-.edit-button:hover { 
+
+.edit-button1 {
+    font-size: smaller;
+    color: lightgoldenrodyellow;
+    padding: 0px;
+}
+
+
+.edit-button0:hover { 
+    color: black;
+    padding: 0px;
+}
+
+.edit-button1:hover { 
     color: black;
     padding: 0px;
 }
@@ -200,8 +248,14 @@ input {
     color: coral;
 }
 
-.categories-article{
+.categories-article0{
     color: darkslategrey;
+    font-weight: normal;
+    font-size: smaller;
+}
+
+.categories-article1{
+    color: lightgoldenrodyellow;
     font-weight: normal;
     font-size: smaller;
 }

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostRequestNewAccount;
+use App\Http\Requests\StorePostRequestPremium;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Comment;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -72,9 +74,9 @@ class UsersController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comments)
+    public function edit()
     {
-        //
+        return view('premium-paying');
     }
 
     /**
@@ -84,9 +86,11 @@ class UsersController extends Controller
      * @param  \App\Models\comments  $comments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comments)
+    public function update(StorePostRequestPremium $request, User $user)
     {
-        //
+        $validated = $request->validated();
+        $user->update($validated);
+        return redirect('/');
     }
 
     /**

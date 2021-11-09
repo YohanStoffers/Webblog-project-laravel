@@ -5,7 +5,7 @@
 
         <div class="article-fully">
 
-            <h5 class="type-article">
+            <h5 class="type-article{{$article->premium}}">
                 Article Type:
                 @if($article->premium===1)
                 <text class="premium ">Premium</text>
@@ -14,17 +14,17 @@
                 @endif
             </h5>
 
-            <h3 class="article-title">{{'Title: '.$article->title}}</h3>
-            <h5 class="categories-article">
+            <h3 class="article-title0">{{'Title: '.$article->title}}</h3>
+            <h5 class="categories-article0">
                 Categories:
                 @foreach($article->categories as $category)
                 {{$category->name.' '}}
                 @endforeach
             </h5>
-            <h5 class="created-updated">{{' Author: '.$article->user->username}}</h5>
+            <h5 class="created-updated0">{{' Author: '.$article->user->username}}</h5>
             <p>{{$article->content}}</p>
             <img class="article-image" src="{{asset('storage/'.$article->image)}}" alt="" />
-            <h5 class="created-updated">
+            <h5 class="created-updated0">
                 {{'Created at '.$article->created_at.'. Updated at '.$article->updated_at.'.'}}
             </h5>
 
@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <h5 class="created-updated">Posted on: {{$comment->created_at}}</h5>
+                        <h5 class="created-updated0">Posted on: {{$comment->created_at}}</h5>
                     </td>
                 </tr>
             </table>

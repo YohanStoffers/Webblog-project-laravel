@@ -6,8 +6,9 @@ use App\Http\Requests\StorePostRequestNewArticle;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Comment;
-
+use Illuminate\Support\Str;
 use Illuminate\Http\File;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
@@ -20,7 +21,7 @@ class ArticlesController extends Controller
     public function index()
     {
         $categories = Category::all();
-        //dd(route('categories.store'));
+        
         $articles = Article::with('user')->get()->sortByDesc('created_at');
         return view('articles', compact('articles','categories'));
     }

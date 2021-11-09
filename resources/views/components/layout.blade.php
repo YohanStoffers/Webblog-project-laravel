@@ -24,7 +24,9 @@
                     <td><a href='/'>Home Page</a></td>
                     <td><a href='{{ route("articles.create") }}'>Create article</a></td>
                     @auth
+                    
                     <td><a href='{{ route("articles.index") }}'>Published articles</a></td>
+                    
                     @endauth
                     <td>
                         @guest
@@ -35,6 +37,13 @@
                         <a href="{{ route('users.show', auth()->user()->id)}}">My Account</a>
                         @endauth
 
+                    </td>
+                    <td>
+                        @auth
+                        @if(auth()->user()->premium === 0)
+                        <a href="{{ route('users.edit', auth()->user()->id)}}">Upgrade account</a>
+                        @endif
+                        @endauth
                     </td>
                 </table>
             </nav>

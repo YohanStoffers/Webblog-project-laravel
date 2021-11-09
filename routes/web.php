@@ -30,6 +30,10 @@ Route::post('/users', [UsersController::class, 'store'])->middleware('guest');
 Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 
+Route::get('/users/{user}/upgrade', [UsersController::class, 'edit'])->name('users.edit');
+Route::post('/users/upgrade/{user}', [UsersController::class, 'update'])->name('users.update');
+
+
 // Article routes
 
 Route::get('/articles', [ArticlesController::class, 'index'])->name('articles.index');
