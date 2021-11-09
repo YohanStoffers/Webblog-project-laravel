@@ -16,10 +16,12 @@ class StorePostRequestNewComment extends FormRequest
     {
         if (auth()->user()) {
             return True;
-        }
-        else {
+        } else {
             return False;
         }
+
+        // CR :: korte variant:
+        // return auth()->user() ? true : false
     }
 
     /**
@@ -30,7 +32,7 @@ class StorePostRequestNewComment extends FormRequest
     public function rules()
     {
         return [
-            'comment'=>['required',],
+            'comment' => ['required',],
         ];
     }
 }
