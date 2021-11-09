@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\weeklyDigest;
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class SendEmails extends Command
 {
@@ -39,11 +42,15 @@ class SendEmails extends Command
      */
     public function handle()
     {
+        $users = User::all();
         $date = date('Y-m-d');
         $from = Carbon::parse($date)->subWeek()->format('Y-m-d');
         $to = Carbon::parse($date)->addday()->format('Y-m-d');
-        $test = Article::whereBetween('created_at', [$from, $to])->get();
-
-        echo $test;
+        $thisWeekArticles = Article::whereBetween('created_at', [$from, $to])->get();
+     
+        foreach($users as $user){
+            Mail::to($user->email)->send(new weeklyDigest($user, $thisWeekArticles));
+        }
+        
     }
 }

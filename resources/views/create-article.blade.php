@@ -40,9 +40,6 @@
                                 <button type="submit">Publish article</button>
                             </td>
                         </tr>
-
-
-
                     </div>
                 </table>
 

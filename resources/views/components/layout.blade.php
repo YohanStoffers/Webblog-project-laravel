@@ -48,8 +48,6 @@
                 </table>
             </nav>
             @guest
-
-
             <table class="login-table">
                 <form method="post" , action="/login">
                     @csrf

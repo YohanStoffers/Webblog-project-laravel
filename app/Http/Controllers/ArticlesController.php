@@ -21,7 +21,6 @@ class ArticlesController extends Controller
     public function index()
     {
         $categories = Category::all();
-        
         $articles = Article::with('user')->get()->sortByDesc('created_at');
         return view('articles', compact('articles','categories'));
     }
@@ -57,12 +56,11 @@ class ArticlesController extends Controller
         $validated['user_id'] = auth()->user()->id;
         
         if (!array_key_exists('categories', $validated)) {
-            $validated += ['categories' => [8]];
+            $validated += ['categories' => [9]];
         }
         
         $article = Article::create($validated);
         $article->categories()->attach($validated['categories']);
-
         return redirect('/');
     }
 
@@ -90,10 +88,8 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
-        $i = 0;
         $categories = Category::all();
-        
-        return view('edit-article', compact('article', 'categories', 'i'));
+        return view('edit-article', compact('article', 'categories'));
     }
 
     /**
@@ -115,7 +111,7 @@ class ArticlesController extends Controller
         $validated['image'] = $path;
 
         if (!array_key_exists('categories', $validated)) {
-            $validated += ['categories' => [8]];
+            $validated += ['categories' => [9]];
         }
         
         $article->categories()->sync($validated['categories']);
@@ -133,7 +129,6 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $article)
     {
-        //dd($article->categories);
         $article->comments()->delete();
         $article->categories()->detach();
         $article->delete();

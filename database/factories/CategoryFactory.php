@@ -20,10 +20,7 @@ class CategoryFactory extends Factory
      * @return array
      */
     public function definition(){
-
-        $i = 0;
         $categories = ['News', 'Fiction', 'Politics', 'Opinion', 'Sciences', 'Sport', 'Humor', 'lifestyle', 'Drama', 'Other'];
-    
         return ['name'=> $categories[$this->faker->unique()->numberBetween(0, 9)],];
     }
 }

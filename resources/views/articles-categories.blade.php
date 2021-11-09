@@ -12,9 +12,6 @@
                 </tr>
             </table>
             <div>
-
-
-
                 @foreach($categories as $category)
                 <h3 class="article-title0">{{$category->name}}</h3>
                 @foreach($category->articles as $article)

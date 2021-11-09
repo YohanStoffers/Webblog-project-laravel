@@ -21,15 +21,10 @@
                             <button type="submit">Pay for premium account</button>
                         </td>
                     </tr>
-
-
-
                 </div>
             </table>
 
         </form>
-
-
 
         @else
         <img class="article-image" src="{{asset('images/sad.png')}}" alt="" width="300" />
@@ -51,9 +46,6 @@
                             <button type="submit">unsubscribe account</button>
                         </td>
                     </tr>
-
-
-
                 </div>
             </table>
 

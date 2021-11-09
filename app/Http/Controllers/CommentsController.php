@@ -40,7 +40,7 @@ class CommentsController extends Controller
         $validated = $request->validated();
         $validated['user_id'] = auth()->user()->id;
         $validated['article_id'] = $article->id ;
-        $comment = Comment::create($validated);
+        Comment::create($validated);
         return redirect(route('articles.show',$article->id));
     }
 
