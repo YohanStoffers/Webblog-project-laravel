@@ -15,12 +15,15 @@ class StorePostRequestNewArticle extends FormRequest
     public function authorize()
     {
         $author = False;
-    
-        if(auth()->user()->author === 1){
+
+        if (auth()->user()->author === 1) {
             $author = True;
         }
 
         return $author;
+
+        // CR :: korte variant:
+        // return (auth()->user()->author === 1) ? true : false
     }
 
     /**
@@ -35,7 +38,7 @@ class StorePostRequestNewArticle extends FormRequest
             'content' => ['required'],
             'categories' => ['',],
             'image' => [''],
-            'premium'=> [''],
+            'premium' => [''],
         ];
     }
 }
